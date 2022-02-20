@@ -37,7 +37,7 @@ function sortAnimalByAge(firstList, secondList) {
   )
 }
 
-// Функция которая фильтрует массив животных поцвету
+// Функция которая фильтрует массив животных по цвету
 function filterAnimalByColor(arr, color) {
   return arr.filter((item) => item.features.includes(color))
 }
@@ -47,8 +47,8 @@ const task11Result = (animals) => {
   // your code here
 
   return (result = createObj(
-    getAnimalQuantity('dog'),
-    getAnimalQuantity('cat'),
+    getAnimalQuantity(animals),
+    getAnimalQuantity(animals),
     getAverageAge(date),
   ))
 }
@@ -114,28 +114,7 @@ const myPowFunc2 = (number, n) => {
 console.log(myPowFunc(3, 4))
 console.log(myPowFunc2(3, 4))
 
-const myFlatFunc = (inputArray) => {
-  const result = inputArray
-  let flattend = [];
-  (function flat(inputArray) {
-    inputArray.forEach(function(el) {
-      if (Array.isArray(el)) flat(el);
-      else flattend.push(el);
-    });
-  })(inputArray);
-  return result;
-}
-
-const myFlatFunc2 = (inputArray) => {
-  const result = inputArray
-  function flatDeep(result, d = 1) {
-    return d > 0 ? result.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), [])
-                : result.slice();
-  }
-  return flatDeep(result)
-}
-
-const myFlatFunc3 = function flat (array, depth = Infinity) {
+const myFlatFunc = function flat (array, depth = Infinity) {
   const result = [];
   let currentDepth = 1;
   const recursiveFlat = function recursiveFlat (array, result) {
@@ -155,5 +134,3 @@ const myFlatFunc3 = function flat (array, depth = Infinity) {
 
 console.log(myFlatFunc([1, 3, 5, [1, [4, 5], 'asdf', [76, [56, [66, 59]]]]]))
 // result 1, 3, 5, 1, 4, 5, 'asdf', 76, 56, 66, 59
-console.log(myFlatFunc2([1, 3, 5, [1, [4, 5], 'asdf', [76, [56, [66, 59]]]]]))
-console.log(myFlatFunc3([1, 3, 5, [1, [4, 5], 'asdf', [76, [56, [66, 59]]]]]))
